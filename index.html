@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta property="og:title" content="RepublicDot">
+    <meta property="og:site_name" content="RepublicDot">
+    <meta property="og:description" content="RepublicDot company website">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+
+    <!-- Milligram CSS minified -->
+    <link rel="stylesheet" href="css/milligram.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <title>RepublicDot</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <div class="container">
+      <div class="row">
+        <div class="column">
+          <img class='head-logo' src="img/logo_black.svg" alt="RepublicDot Logo">
+          <span class='head-title'>RepublicDot</span>
+          <p class="title">
+            당신을 위한 3세대 콘텐츠 커뮤니티
+          </p>
+          <p>
+            <span class="date">9.19</span>
+            <br />
+            리뷰가 영원히 바뀝니다.
+          </p>
+          <p>
+          </p>
+          <p>
+            사전등록 (현재 <span id="apply-num">_</span> 명)
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column column-offset-25 column-50">
+          <form>
+            <fieldset>
+              <label for="nameField">Name</label>
+              <input type="text" placeholder="CJ Patoilo" id="nameField">
+              <label for="commentField">Comment</label>
+              <textarea placeholder="Hi CJ …" id="commentField"></textarea>
+              <input class="button-primary" type="submit" value="Send">
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="js/background.js"></script>
+  </body>
+</html>

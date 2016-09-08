@@ -1,0 +1,49 @@
+html {
+  text-align: center;
+  font-size: 50%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 70%;
+  }
+}
+
+body {
+  background-color: #1b1b1b;
+  color: #fff;
+}
+
+#canvas {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.container {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.head-logo {
+  height: 80px;
+  opacity: .85;
+  margin: 0 auto;
+  display: block;
+}
+
+.head-title {
+  letter-spacing: .08rem;
+  font-weight: 400;
+  opacity: .6;
+  -ms-filter: "alpha(Opacity=60)";
+  filter: alpha(opacity=60);
+}
+
+.date {
+  font-size: 5rem;
+}
