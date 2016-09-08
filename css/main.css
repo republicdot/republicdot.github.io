@@ -25,6 +25,7 @@ body {
   font-weight: 400;
   background-color: #1b1b1b;
   color: #fff;
+  font-size: 1.4rem;
 }
 
 #canvas {
@@ -41,7 +42,7 @@ body {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  max-width: 80rem;
+  max-width: 54rem;
 }
 
 .head-logo {
@@ -57,13 +58,15 @@ body {
   opacity: .6;
   -ms-filter: "alpha(Opacity=60)";
   filter: alpha(opacity=60);
+  font-size: 1rem;
 }
 
 .date {
-  font-size: 5rem;
+  font-size: 8rem;
 }
 
 .form-desc {
+  margin-top: 8rem;
   color: #d1d1d1;
 }
 
