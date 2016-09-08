@@ -1,8 +1,28 @@
+@font-face {
+    font-family: 'Yoon Gothic';
+    src: url('/fonts/YoonGothicPro740.eot');
+    src: url('/fonts/YoonGothicPro740.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/YoonGothicPro740.woff') format('woff'),
+         url('/fonts/YoonGothicPro740.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Yoon Gothic';
+    src: url('/fonts/YoonGothicPro760.eot');
+    src: url('/fonts/YoonGothicPro760.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/YoonGothicPro760.woff') format('woff'),
+         url('/fonts/YoonGothicPro760.ttf') format('truetype');
+    font-weight: 600;
+}
+
 html {
   text-align: center;
 }
 
 body {
+  font-family: 'Yoon Gothic', sans-serif;
+  font-weight: 400;
   background-color: #1b1b1b;
   color: #fff;
 }
@@ -41,6 +61,10 @@ body {
 
 .date {
   font-size: 5rem;
+}
+
+.form-desc {
+  color: #d1d1d1;
 }
 
 .help {
