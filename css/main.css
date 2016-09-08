@@ -78,6 +78,16 @@ body {
   display: none;
 }
 
+footer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+}
+
+.facebook-link {
+  color: #d1d1d1;
+}
+
 #feedback {
   position: fixed;
   right: 20px;
