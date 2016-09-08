@@ -43,10 +43,13 @@ body {
   font-size: 5rem;
 }
 
-/*.form {
-  max-width: 500px;
-  margin: 0 auto;
-}*/
+.help {
+  margin-top: -15px;
+  margin-bottom: 15px;
+  text-align: left;
+  color: #faa;
+  display: none;
+}
 
 #feedback {
   position: fixed;

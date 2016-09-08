@@ -43,13 +43,17 @@
       </div>
       <div class="row">
         <div class="column form">
-          <form id="form" method="POST" target="no-target">
+          <form id="form" method="POST" target="no-target" onsubmit="return onSubmit();">
             <fieldset>
-              <!-- <label for="emailField">Email</label> -->
-              <input type="text" placeholder="Email" id="emailField">
-              <!-- <label for="commentField">Comment</label> -->
-              <textarea placeholder="Comment" id="commentField"></textarea>
-              <input class="button-primary" type="submit" value="Send">
+              <input type="text" placeholder="Email" id="q1Field" />
+              <div class="help" id="help-q1">
+                Email은 필수입력 항목입니다.
+              </div>
+              <textarea placeholder="Comment (10자 이상)" id="q2Field"></textarea>
+              <div class="help" id="help-q2">
+                Comment는 10자 이상 써주셔야 합니다.
+              </div>
+              <input id="submit-button" class="button-primary" type="submit" value="Send">
             </fieldset>
           </form>
         </div>
@@ -62,21 +66,39 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/background.js"></script>
     <script type="text/javascript">
-      $('#form').one('submit',function(){
-          var email = encodeURIComponent($('#emailField').val());
-          var comment = encodeURIComponent($('#commentField').val());
-          var q1ID = "entry.38379682";
-          var q2ID = "entry.1495363534";
-          var baseURL = 'https://docs.google.com/a/republicdot.com/forms/d/e/1FAIpQLSc9-9NmcJ5FVPnhirDAj95q-sRIC9E4ubHilSGj2EO7cwTJ_w/formResponse?';
-          var submitRef = '&submit=Submit';
-          var submitURL = (baseURL + q1ID + "=" + email + "&" + q2ID + "=" + comment + submitRef);
-          $(this)[0].action=submitURL;
+      function onSubmit () {
 
-          $("#emailField").val('');
-          $("#commentField").val('')
-          $("#feedback").show();
-          setTimeout(function(){$("#feedback").fadeOut();}, 3000);
-      });
+        var q1 = encodeURIComponent($('#q1Field').val());
+        var q2 = encodeURIComponent($('#q2Field').val());
+
+        $("#help-q1").hide();
+        $("#help-q2").hide();
+        if (q1.length === 0) {
+          $("#help-q1").show();
+          return false;
+        }
+        if (q2.length < 10) {
+          console.log('asdf');
+          $("#help-q2").show();
+          return false;
+        }
+        var q1ID = "entry.38379682";
+        var q2ID = "entry.1495363534";
+        var baseURL = 'https://docs.google.com/a/republicdot.com/forms/d/e/1FAIpQLSc9-9NmcJ5FVPnhirDAj95q-sRIC9E4ubHilSGj2EO7cwTJ_w/formResponse?';
+        var submitRef = '&submit=Submit';
+        var submitURL = (baseURL + q1ID + "=" + q1 + "&" + q2ID + "=" + q2 + submitRef);
+        $("#form")[0].action=submitURL;
+
+        $("#q1Field").val('');
+        $("#q2Field").val('');
+        $("#help-q1").hide();
+        $("#help-q2").hide();
+
+        $("#feedback").fadeIn();
+        setTimeout(function(){$("#feedback").fadeOut();}, 5000);
+
+        return true;
+      };
     </script>
   </body>
 </html>
