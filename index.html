@@ -42,20 +42,43 @@
         </div>
       </div>
       <div class="row">
-        <div class="column column-offset-25 column-50">
-          <form>
+        <div class="column form">
+          <form id="form" method="POST" target="no-target">
             <fieldset>
-              <label for="nameField">Name</label>
-              <input type="text" placeholder="CJ Patoilo" id="nameField">
-              <label for="commentField">Comment</label>
-              <textarea placeholder="Hi CJ …" id="commentField"></textarea>
+              <!-- <label for="emailField">Email</label> -->
+              <input type="text" placeholder="Email" id="emailField">
+              <!-- <label for="commentField">Comment</label> -->
+              <textarea placeholder="Comment" id="commentField"></textarea>
               <input class="button-primary" type="submit" value="Send">
             </fieldset>
           </form>
         </div>
       </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script src="js/background.js"></script>
+    <div id="feedback">
+      신청이 완료되었습니다.
+    </div>
+    <iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src="js/background.js"></script>
+    <script type="text/javascript">
+      $('#form').one('submit',function(){
+          var email = encodeURIComponent($('#emailField').val());
+          var comment = encodeURIComponent($('#commentField').val());
+          var q1ID = "entry.38379682";
+          var q2ID = "entry.1495363534";
+          var baseURL = 'https://docs.google.com/a/republicdot.com/forms/d/e/1FAIpQLSc9-9NmcJ5FVPnhirDAj95q-sRIC9E4ubHilSGj2EO7cwTJ_w/formResponse?';
+          var submitRef = '&submit=Submit';
+          var submitURL = (baseURL + q1ID + "=" + email + "&" + q2ID + "=" + comment + submitRef);
+          $(this)[0].action=submitURL;
+
+          $("#emailField").val('');
+          $("#commentField").val('')
+          $("#feedback").show();
+          setTimeout(function(){$("#feedback").fadeOut();}, 3000);
+      });
+    </script>
   </body>
 </html>
+
+https://docs.google.com/a/republicdot.com/forms/d/e/1FAIpQLSc9-9NmcJ5FVPnhirDAj95q-sRIC9E4ubHilSGj2EO7cwTJ_w/formResponse

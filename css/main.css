@@ -1,12 +1,5 @@
 html {
   text-align: center;
-  font-size: 50%;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 70%;
-  }
 }
 
 body {
@@ -28,10 +21,11 @@ body {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  max-width: 80rem;
 }
 
 .head-logo {
-  height: 80px;
+  height: 100px;
   opacity: .85;
   margin: 0 auto;
   display: block;
@@ -47,4 +41,20 @@ body {
 
 .date {
   font-size: 5rem;
+}
+
+/*.form {
+  max-width: 500px;
+  margin: 0 auto;
+}*/
+
+#feedback {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+  display: none;
 }
