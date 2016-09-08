@@ -70,6 +70,20 @@ body {
   color: #d1d1d1;
 }
 
+.error {
+  color: #faa;
+  display: none;
+}
+
+#re-apply {
+  color: #fff;
+  cursor: pointer;
+}
+
+#re-apply:hover {
+  color: #606c76
+}
+
 .help {
   margin-top: -15px;
   margin-bottom: 15px;
