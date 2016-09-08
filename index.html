@@ -45,7 +45,7 @@
             &nbsp;&nbsp;
             <a id="re-apply">다시 시도</a>
           </div>
-          <form id="form" method="POST" target="no-target">
+          <form id="form" method="POST" target="no-target" onsubmit="return onSubmit();">
             <fieldset>
               <input type="text" placeholder="Email" id="q1Field" />
               <div class="help" id="help-q1">
@@ -53,7 +53,7 @@
               <textarea placeholder="Comment (10자 이상)" id="q2Field"></textarea>
               <div class="help" id="help-q2">
               </div>
-              <button id="submit-button" class="button-primary" type="button">Send</button>
+              <button id="submit-button" class="button-primary" type="submit">Send</button>
             </fieldset>
           </form>
         </div>
@@ -88,21 +88,62 @@
           url: "https://docs.google.com/a/republicdot.com/forms/d/e/1FAIpQLSc9-9NmcJ5FVPnhirDAj95q-sRIC9E4ubHilSGj2EO7cwTJ_w/formResponse",
           data: {q1ID: q1, q2ID: q2},
           type: "POST",
-          dataType: "xml"
-        })
-        .done(function() {
+          dataType: "xml",
+          statusCode: {
+            0: function() {
+              $("#q1Field").val('');
+              $("#q2Field").val('');
+              $(".error").hide();
+              $("#help-q1").hide();
+              $("#help-q2").hide();
+
+              $("#feedback").fadeIn();
+              setTimeout(function(){$("#feedback").fadeOut();}, 5000);
+            },
+            200: function() {
+              $("#q1Field").val('');
+              $("#q2Field").val('');
+              $(".error").hide();
+              $("#help-q1").hide();
+              $("#help-q2").hide();
+
+              $("#feedback").fadeIn();
+              setTimeout(function(){$("#feedback").fadeOut();}, 5000);
+            }
+          }
+        });
+      }
+
+      function onSubmit() {
+        var q1 = encodeURIComponent($('#q1Field').val());
+        var q2 = encodeURIComponent($('#q2Field').val());
+
+        $(".error").hide();
+        $("#help-q1").hide();
+        $("#help-q2").hide();
+
+        // if (validateForm(q1, q2)) {
+        //   submitToGoogle(q1, q2);
+        // }
+
+        if (validateForm(q1, q2)) {
+          var q1ID = "entry.38379682";
+          var q2ID = "entry.1495363534";
+          var baseURL = 'https://docs.google.com/a/republicdot.com/forms/d/e/1FAIpQLSc9-9NmcJ5FVPnhirDAj95q-sRIC9E4ubHilSGj2EO7cwTJ_w/formResponse?';
+          var submitRef = '&submit=Submit';
+          var submitURL = (baseURL + q1ID + "=" + q1 + "&" + q2ID + "=" + q2 + submitRef);
+          $("#form")[0].action=submitURL;
+
           $("#q1Field").val('');
           $("#q2Field").val('');
-          $(".error").hide();
           $("#help-q1").hide();
           $("#help-q2").hide();
 
           $("#feedback").fadeIn();
           setTimeout(function(){$("#feedback").fadeOut();}, 5000);
-        })
-        .fail(function(e) {
-          $(".error").show();
-        });
+
+          return true;
+        }
       }
 
       $(function() {
