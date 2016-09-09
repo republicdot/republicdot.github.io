@@ -68,7 +68,7 @@ body {
 }
 
 .form-desc {
-  margin-top: 6rem;
+  margin-top: 8rem;
   color: #d1d1d1;
 }
 
@@ -147,7 +147,7 @@ footer {
   height: 10px;
   animation: pulse 1.75s infinite linear;
 }
-#loading {
+.loading {
   position: absolute;
   left: 50%;
   border-radius: 5px;
@@ -156,8 +156,8 @@ footer {
   animation: pulse 1.75s infinite linear;
   animation-delay: .3s;
 }
-#loading::before,
-#loading::after {
+.loading::before,
+.loading::after {
   content: "";
   position: absolute;
   border-radius: 5px;
@@ -165,10 +165,10 @@ footer {
   height: 10px;
   animation: pulse 1.75s infinite linear;
 }
-#loading::before {
+.loading::before {
   left: -15px;
 }
-#loading::after {
+.loading::after {
   left: 15px;
   animation-delay: .6s;
 }

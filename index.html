@@ -40,7 +40,7 @@
       </div>
       <div class="row">
         <div class="column form">
-          <div id="loading"></div>
+          <div class="loading"></div>
           <div id="error-load-api" class="error" id="help">
             야생의 보노보노가 나타나 신청을 방해하였다.
             &nbsp;&nbsp;
@@ -106,11 +106,11 @@
     function loadTotalApplyCount () {
       getTotalApplyCount(function(error, result) {
         if (error) {
-          $("#loading").hide();
+          $(".loading").hide();
           $("#error-load-api").fadeIn();
           $("#apply-num").html('xx')
         } else {
-          $("#loading").hide();
+          $(".loading").hide();
           $("#form").fadeIn();
           $("#apply-num").html(result)
         }
@@ -164,6 +164,12 @@
       var q1 = $('#q1Field').val();
       var q2 = $('#q2Field').val();
 
+      var $submitButton = $("#submit-button");
+      var $loading = $("<div class='loading'></div>");
+
+      $submitButton.html("");
+      $submitButton.append($loading);
+
       gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEET_ID,
         range: 'response!A1:D1',
@@ -173,6 +179,8 @@
           [new Date(), q1, q2]
         ],
       }).then(function(r) {
+        $loading.remove();
+        $submitButton.html("Send");
         $("#q1Field").val('');
         $("#q2Field").val('');
         $("#error").hide();
@@ -182,6 +190,8 @@
         $("#feedback").fadeIn();
         setTimeout(function(){$("#feedback").fadeOut();}, 5000);
       }, function(e) {
+        $loading.remove();
+        $submitButton.html("Send");
         $("#error").show();
       });
     }
