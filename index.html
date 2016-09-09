@@ -130,8 +130,8 @@
     }
 
     function handleSendClick(event) {
-      var q1 = encodeURIComponent($('#q1Field').val());
-      var q2 = encodeURIComponent($('#q2Field').val());
+      var q1 = $('#q1Field').val();
+      var q2 = $('#q2Field').val();
 
       $("#error").hide();
       $("#help-q1").hide();
@@ -161,8 +161,8 @@
     }
 
     function addRowToGoogleSheets(q1, q2) {
-      var q1 = encodeURIComponent($('#q1Field').val());
-      var q2 = encodeURIComponent($('#q2Field').val());
+      var q1 = $('#q1Field').val();
+      var q2 = $('#q2Field').val();
 
       gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEET_ID,
