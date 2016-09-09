@@ -34,18 +34,24 @@
             리뷰가 영원히 바뀝니다.
           </p>
           <p class="form-desc">
-            사전등록 (현재 <span id="apply-num">_</span> 명)
+            사전등록 (현재 <span id="apply-num">...</span> 명)
           </p>
         </div>
       </div>
       <div class="row">
         <div class="column form">
-          <div class="error" id="help">
-            야생의 몬스터가 나타나 신청을 방해하였다.
+          <div id="loading"></div>
+          <div id="error-load-api" class="error" id="help">
+            야생의 보노보노가 나타나 신청을 방해하였다.
+            &nbsp;&nbsp;
+            <a id="re-load-api">다시 시도</a>
+          </div>
+          <div id="error" class="error" id="help">
+            야생의 보노보노가 나타나 신청을 방해하였다.
             &nbsp;&nbsp;
             <a id="re-apply">다시 시도</a>
           </div>
-          <form id="form" method="POST" target="no-target" onsubmit="return onSubmit();">
+          <form id="form">
             <fieldset>
               <input type="text" placeholder="Email" id="q1Field" />
               <div class="help" id="help-q1">
@@ -53,7 +59,7 @@
               <textarea placeholder="Comment (10자 이상)" id="q2Field"></textarea>
               <div class="help" id="help-q2">
               </div>
-              <button id="submit-button" class="button-primary" type="submit">Send</button>
+              <button id="submit-button" class="button-primary" type="button" onclick="handleSendClick(event)">Send</button>
             </fieldset>
           </form>
         </div>
@@ -69,119 +75,129 @@
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/background.js"></script>
     <script type="text/javascript">
-      function validateForm(q1, q2) {
-        if (q1.length === 0) {
-          $("#help-q1").html("Email은 필수입력 항목입니다.").show();
-          return false;
+
+    var CLIENT_ID = '77785196753-ppvnddomaq0i35pglsganqq6etuvscbq.apps.googleusercontent.com';
+    var SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
+    var SPREADSHEET_ID = '1-cVEfm0L99dY2x2wRyvytmRsU3qO756g9UYKx_uravI';
+    var API_KEY = 'AIzaSyBOp1McIXyjaia1iAkG_b-G1d8WQmUgh2w';
+    var discoveryUrl =
+        'https://sheets.googleapis.com/$discovery/rest?version=v4';
+
+    /**
+     * Load Sheets API client library.
+     */
+    function loadSheetsApi() {
+      gapi.client.setApiKey(API_KEY);
+      gapi.client.load(discoveryUrl).then(loadTotalApplyCount);
+    }
+
+    function getTotalApplyCount(cb) {
+      gapi.client.sheets.spreadsheets.values.get({
+        spreadsheetId: SPREADSHEET_ID,
+        range: 'response!A2:C'
+      }).then(function(response) {
+        var range = response.result;
+        cb(null, range.values.length);
+      }, function(response) {
+        cb(response.result.error);
+      });
+    }
+
+    function loadTotalApplyCount () {
+      getTotalApplyCount(function(error, result) {
+        if (error) {
+          $("#loading").hide();
+          $("#error-load-api").fadeIn();
+          $("#apply-num").html('xx')
+        } else {
+          $("#loading").hide();
+          $("#form").fadeIn();
+          $("#apply-num").html(result)
         }
-        if (q2.length < 10) {
-          $("#help-q2").html("Comment는 10자 이상 써주셔야 합니다.").show();
-          return false;
-        }
-        return true;
+      });
+    }
+
+    function validateForm(q1, q2) {
+      if (q1.length === 0) {
+        $("#help-q1").html("Email은 필수입력 항목입니다.").show();
+        return false;
+      }
+      if (q2.length < 10) {
+        $("#help-q2").html("Comment는 10자 이상 써주셔야 합니다.").show();
+        return false;
+      }
+      return true;
+    }
+
+    function handleSendClick(event) {
+      var q1 = encodeURIComponent($('#q1Field').val());
+      var q2 = encodeURIComponent($('#q2Field').val());
+
+      $("#error").hide();
+      $("#help-q1").hide();
+      $("#help-q2").hide();
+
+      if (validateForm(q1, q2)) {
+        gapi.auth.authorize(
+          {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
+          handleAuthResult);
       }
 
-      function submitToGoogle(q1, q2) {
-        var q1ID = "entry.38379682";
-        var q2ID = "entry.1495363534";
-        $.ajax({
-          url: "https://docs.google.com/a/republicdot.com/forms/d/e/1FAIpQLSc9-9NmcJ5FVPnhirDAj95q-sRIC9E4ubHilSGj2EO7cwTJ_w/formResponse",
-          data: {q1ID: q1, q2ID: q2},
-          type: "POST",
-          dataType: "xml",
-          statusCode: {
-            0: function() {
-              $("#q1Field").val('');
-              $("#q2Field").val('');
-              $(".error").hide();
-              $("#help-q1").hide();
-              $("#help-q2").hide();
+      return false;
+    }
 
-              $("#feedback").fadeIn();
-              setTimeout(function(){$("#feedback").fadeOut();}, 5000);
-            },
-            200: function() {
-              $("#q1Field").val('');
-              $("#q2Field").val('');
-              $(".error").hide();
-              $("#help-q1").hide();
-              $("#help-q2").hide();
-
-              $("#feedback").fadeIn();
-              setTimeout(function(){$("#feedback").fadeOut();}, 5000);
-            }
-          }
-        });
+    /**
+     * Handle response from authorization server.
+     *
+     * @param {Object} authResult Authorization result.
+     */
+    function handleAuthResult(authResult) {
+      if (authResult && !authResult.error) {
+        $("#error").hide();
+        gapi.client.load(discoveryUrl).then(addRowToGoogleSheets);
+      } else {
+        $("#error").show();
       }
+    }
 
-      function onSubmit() {
-        var q1 = encodeURIComponent($('#q1Field').val());
-        var q2 = encodeURIComponent($('#q2Field').val());
+    function addRowToGoogleSheets(q1, q2) {
+      var q1 = encodeURIComponent($('#q1Field').val());
+      var q2 = encodeURIComponent($('#q2Field').val());
 
-        $(".error").hide();
+      gapi.client.sheets.spreadsheets.values.append({
+        spreadsheetId: SPREADSHEET_ID,
+        range: 'response!A1:D1',
+        valueInputOption: 'USER_ENTERED'
+      }, {
+        "values": [
+          [new Date(), q1, q2]
+        ],
+      }).then(function(r) {
+        $("#q1Field").val('');
+        $("#q2Field").val('');
+        $("#error").hide();
         $("#help-q1").hide();
         $("#help-q2").hide();
 
-        // if (validateForm(q1, q2)) {
-        //   submitToGoogle(q1, q2);
-        // }
-
-        if (validateForm(q1, q2)) {
-          var q1ID = "entry.38379682";
-          var q2ID = "entry.1495363534";
-          var baseURL = 'https://docs.google.com/a/republicdot.com/forms/d/e/1FAIpQLSc9-9NmcJ5FVPnhirDAj95q-sRIC9E4ubHilSGj2EO7cwTJ_w/formResponse?';
-          var submitRef = '&submit=Submit';
-          var submitURL = (baseURL + q1ID + "=" + q1 + "&" + q2ID + "=" + q2 + submitRef);
-          $("#form")[0].action=submitURL;
-
-          $("#q1Field").val('');
-          $("#q2Field").val('');
-          $("#help-q1").hide();
-          $("#help-q2").hide();
-
-          $("#feedback").fadeIn();
-          setTimeout(function(){$("#feedback").fadeOut();}, 5000);
-
-          return true;
-        }
-      }
-
-      $(function() {
-        $("#submit-button").click(function() {
-          var q1 = encodeURIComponent($('#q1Field').val());
-          var q2 = encodeURIComponent($('#q2Field').val());
-
-          $(".error").hide();
-          $("#help-q1").hide();
-          $("#help-q2").hide();
-
-          if (validateForm(q1, q2)) {
-            submitToGoogle(q1, q2);
-          }
-
-          // var q1ID = "entry.38379682";
-          // var q2ID = "entry.1495363534";
-          // var baseURL = 'https://docs.google.com/a/republicdot.com/forms/d/e/1FAIpQLSc9-9NmcJ5FVPnhirDAj95q-sRIC9E4ubHilSGj2EO7cwTJ_w/formResponse?';
-          // var submitRef = '&submit=Submit';
-          // var submitURL = (baseURL + q1ID + "=" + q1 + "&" + q2ID + "=" + q2 + submitRef);
-          // $("#form")[0].action=submitURL;
-          //
-          // $("#q1Field").val('');
-          // $("#q2Field").val('');
-          // $("#help-q1").hide();
-          // $("#help-q2").hide();
-
-          // $("#feedback").fadeIn();
-          // setTimeout(function(){$("#feedback").fadeOut();}, 5000);
-          //
-          // return true;
-        });
-
-        $("#re-apply").click(function() {
-          $(".error").hide();
-          $("#submit-button").trigger("click");
-        });
+        $("#feedback").fadeIn();
+        setTimeout(function(){$("#feedback").fadeOut();}, 5000);
+      }, function(e) {
+        $("#error").show();
       });
+    }
+
+    $(function() {
+      $("#re-apply").click(function() {
+        $("#error").hide();
+        $("#submit-button").trigger("click");
+      });
+
+      $("#re-apply").click(function() {
+        $("#error-load-api").hide();
+        loadSheetsApi();
+      });
+    });
     </script>
+    <script src="https://apis.google.com/js/client.js?onload=loadSheetsApi"></script>
   </body>
 </html>

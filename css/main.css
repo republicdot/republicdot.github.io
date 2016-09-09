@@ -48,6 +48,8 @@ body {
 .head-logo {
   height: 100px;
   opacity: .85;
+  -ms-filter: "alpha(Opacity=85)";
+  filter: alpha(opacity=85);
   margin: 0 auto;
   display: block;
 }
@@ -75,6 +77,15 @@ body {
   display: none;
 }
 
+#re-load-api {
+  color: #fff;
+  cursor: pointer;
+}
+
+#re-load-api:hover {
+  color: #606c76
+}
+
 #re-apply {
   color: #fff;
   cursor: pointer;
@@ -100,6 +111,10 @@ footer {
 
 .facebook-link {
   color: #d1d1d1;
+  font-size: 1rem;
+  opacity: .85;
+  -ms-filter: "alpha(Opacity=85)";
+  filter: alpha(opacity=85);
 }
 
 #feedback {
@@ -111,4 +126,49 @@ footer {
   line-height: 50px;
   border-radius: 5px;
   display: none;
+}
+
+#form {
+  display: none;
+}
+
+@keyframes pulse {
+  0% {
+    background: #fff;
+  }
+  50% {
+    background: transparent;
+  }
+}
+.common {
+  position: absolute;
+  border-radius: 5px;
+  width: 10px;
+  height: 10px;
+  animation: pulse 1.75s infinite linear;
+}
+#loading {
+  position: absolute;
+  left: 50%;
+  border-radius: 5px;
+  width: 10px;
+  height: 10px;
+  animation: pulse 1.75s infinite linear;
+  animation-delay: .3s;
+}
+#loading::before,
+#loading::after {
+  content: "";
+  position: absolute;
+  border-radius: 5px;
+  width: 10px;
+  height: 10px;
+  animation: pulse 1.75s infinite linear;
+}
+#loading::before {
+  left: -15px;
+}
+#loading::after {
+  left: 15px;
+  animation-delay: .6s;
 }
