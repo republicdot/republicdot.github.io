@@ -74,7 +74,7 @@
     <div id="mainPopup" class="modal">
 
       <!-- The Close Button -->
-      <span class="modal-close" onclick="document.getElementById('mainPopup').style.display='none'">&times;</span>
+      <span class="modal-close">&times;</span>
 
       <!-- Modal Content (The Image) -->
       <img class="modal-content" id="img01">
@@ -225,13 +225,12 @@
         window.open('http://www.yes24.com/24/Goods/30108067?Acode=101', '_blank');
       });
 
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("modal-close")[0];
+      var $span = $(".modal-close");
 
       // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
+      $span.click(function() {
         $modal.fadeOut();
-      }
+      });
 
       $modal.fadeIn(3000);
     }
