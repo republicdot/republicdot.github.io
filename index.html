@@ -93,6 +93,8 @@
     var discoveryUrl =
         'https://sheets.googleapis.com/$discovery/rest?version=v4';
 
+    var OPENBETA_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwhbRD2Pav3Gyluz6ytyTp3fqyZsfH5CnJSOeXCQXs8sGLPwW8/exec';
+
     var $loading = $(".cssload-thecube");
     var $submitButton = $("#submit-button");
 
@@ -106,39 +108,6 @@
       $loading.remove();
       $submitButton.html("Send");
       $submitButton.removeAttr("disabled");
-    }
-
-    /**
-     * Load Sheets API client library.
-     */
-    function loadSheetsApi() {
-      gapi.client.setApiKey(API_KEY);
-      gapi.client.load(discoveryUrl).then(loadTotalApplyCount);
-    }
-
-    function getTotalApplyCount(cb) {
-      gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: SPREADSHEET_ID,
-        range: 'response!A2:C'
-      }).then(function(response) {
-        var range = response.result;
-        cb(null, range.values.length);
-      }, function(response) {
-        cb(response.result.error);
-      });
-    }
-
-    function loadTotalApplyCount () {
-      getTotalApplyCount(function(error, result) {
-        if (error) {
-          stopLoading();
-          $("#error-load-api").fadeIn();
-          $("#apply-num").html('xx')
-        } else {
-          stopLoading();
-          $("#apply-num").html(result)
-        }
-      });
     }
 
     function validateForm(q1, q2) {
@@ -162,26 +131,54 @@
       $("#help-q2").hide();
 
       if (validateForm(q1, q2)) {
-        gapi.auth.authorize(
-          {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
-          handleAuthResult);
+        addRowToGoogleSheet(OPENBETA_SHEET_URL, {email: q1, comment: q2});
       }
 
       return false;
     }
 
-    /**
-     * Handle response from authorization server.
-     *
-     * @param {Object} authResult Authorization result.
-     */
-    function handleAuthResult(authResult) {
-      if (authResult && !authResult.error) {
+    function getTotalApplyCount(url) {
+      startLoading();
+      $.ajax({
+        url: url,
+        type: 'GET'
+      })
+      .done(function(r) {
+        stopLoading();
+        $("#apply-num").html(r.total-1);
+      })
+      .fail(function(e) {
+        stopLoading();
+        $("#error-load-api").fadeIn();
+        $("#apply-num").html('xx');
+      });
+    }
+
+    function addRowToGoogleSheet(url, data) {
+      startLoading();
+
+      $.ajax({
+        url: url,
+        data: data,
+        type: 'POST'
+      })
+      .done(function(r) {
+        stopLoading();
+        $("#q1Field").val('');
+        $("#q2Field").val('');
         $("#error").hide();
-        gapi.client.load(discoveryUrl).then(addRowToGoogleSheets);
-      } else {
+        $("#help-q1").hide();
+        $("#help-q2").hide();
+
+        $("#apply-num").html(r.row-1);
+
+        $("#feedback").fadeIn();
+        setTimeout(function(){$("#feedback").fadeOut();}, 5000);
+      })
+      .fail(function(e) {
+        stopLoading();
         $("#error").show();
-      }
+      });
     }
 
     function addRowToGoogleSheets() {
@@ -246,13 +243,12 @@
         loadSheetsApi();
       });
 
-      startLoading();
-
       setTimeout(function() {
         showMainPopup();
       }, 5000);
+
+      getTotalApplyCount(OPENBETA_SHEET_URL);
     });
     </script>
-    <script src="https://apis.google.com/js/client.js?onload=loadSheetsApi"></script>
   </body>
 </html>
