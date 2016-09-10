@@ -7,12 +7,6 @@
     <meta property="og:site_name" content="RepublicDot">
     <meta property="og:description" content="RepublicDot company website">
 
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-
-    <!-- CSS Reset -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
-
     <!-- Milligram CSS minified -->
     <link rel="stylesheet" href="css/milligram.min.css">
     <link rel="stylesheet" href="css/main.css">
@@ -70,6 +64,12 @@
     <div id="feedback">
       신청이 완료되었습니다.
     </div>
+    <div class="cssload-thecube" style="display: none;">
+    	<div class="cssload-cube cssload-c1"></div>
+    	<div class="cssload-cube cssload-c2"></div>
+    	<div class="cssload-cube cssload-c4"></div>
+    	<div class="cssload-cube cssload-c3"></div>
+    </div>
     <iframe src="#" id="no-target" name="no-target" style="visibility:hidden"></iframe>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script type="text/javascript" src="js/background.js"></script>
@@ -82,13 +82,12 @@
     var discoveryUrl =
         'https://sheets.googleapis.com/$discovery/rest?version=v4';
 
-    var $loading = $("<div class='loading'></div>");
+    var $loading = $(".cssload-thecube");
     var $submitButton = $("#submit-button");
 
     function startLoading() {
-      console.log('load start');
       $submitButton.html("");
-      $submitButton.append($loading);
+      $submitButton.append($loading.show());
       $submitButton.attr("disabled", true);
     }
 
