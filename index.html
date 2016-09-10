@@ -40,7 +40,6 @@
       </div>
       <div class="row">
         <div class="column form">
-          <div class="loading"></div>
           <div id="error-load-api" class="error" id="help">
             야생의 보노보노가 나타나 신청을 방해하였다.
             &nbsp;&nbsp;
@@ -83,6 +82,22 @@
     var discoveryUrl =
         'https://sheets.googleapis.com/$discovery/rest?version=v4';
 
+    var $loading = $("<div class='loading'></div>");
+    var $submitButton = $("#submit-button");
+
+    function startLoading() {
+      console.log('load start');
+      $submitButton.html("");
+      $submitButton.append($loading);
+      $submitButton.attr("disabled", true);
+    }
+
+    function stopLoading() {
+      $loading.remove();
+      $submitButton.html("Send");
+      $submitButton.removeAttr("disabled");
+    }
+
     /**
      * Load Sheets API client library.
      */
@@ -106,12 +121,11 @@
     function loadTotalApplyCount () {
       getTotalApplyCount(function(error, result) {
         if (error) {
-          $(".loading").hide();
+          stopLoading();
           $("#error-load-api").fadeIn();
           $("#apply-num").html('xx')
         } else {
-          $(".loading").hide();
-          $("#form").fadeIn();
+          stopLoading();
           $("#apply-num").html(result)
         }
       });
@@ -164,11 +178,7 @@
       var q1 = $('#q1Field').val();
       var q2 = $('#q2Field').val();
 
-      var $submitButton = $("#submit-button");
-      var $loading = $("<div class='loading'></div>");
-
-      $submitButton.html("");
-      $submitButton.append($loading);
+      startLoading();
 
       gapi.client.sheets.spreadsheets.values.append({
         spreadsheetId: SPREADSHEET_ID,
@@ -179,8 +189,7 @@
           [new Date(), q1, q2]
         ],
       }).then(function(r) {
-        $loading.remove();
-        $submitButton.html("Send");
+        stopLoading();
         $("#q1Field").val('');
         $("#q2Field").val('');
         $("#error").hide();
@@ -206,6 +215,8 @@
         $("#error-load-api").hide();
         loadSheetsApi();
       });
+
+      startLoading();
     });
     </script>
     <script src="https://apis.google.com/js/client.js?onload=loadSheetsApi"></script>
