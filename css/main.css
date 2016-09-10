@@ -148,7 +148,7 @@ footer {
 }
 .loading {
   position: absolute;
-  left: 50%;
+  left: 49%;
   border-radius: 5px;
   width: 10px;
   height: 10px;
