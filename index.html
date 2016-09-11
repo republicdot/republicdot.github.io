@@ -34,11 +34,6 @@
       </div>
       <div class="row">
         <div class="column form">
-          <div id="error-load-api" class="error" id="help">
-            야생의 보노보노가 나타나 신청을 방해하였다.
-            &nbsp;&nbsp;
-            <a id="re-load-api">다시 시도</a>
-          </div>
           <div id="error" class="error" id="help">
             야생의 보노보노가 나타나 신청을 방해하였다.
             &nbsp;&nbsp;
@@ -149,7 +144,6 @@
       })
       .fail(function(e) {
         stopLoading();
-        $("#error-load-api").fadeIn();
         $("#apply-num").html('xx');
       });
     }
@@ -235,12 +229,7 @@
     $(function() {
       $("#re-apply").click(function() {
         $("#error").hide();
-        $("#submit-button").trigger("click");
-      });
-
-      $("#re-apply").click(function() {
-        $("#error-load-api").hide();
-        loadSheetsApi();
+        $submitButton.trigger("click");
       });
 
       setTimeout(function() {
