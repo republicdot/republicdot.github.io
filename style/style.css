@@ -210,7 +210,6 @@ button:focus {
       background-image: url(../images/contact_w.svg); }
 
 .container {
-  min-height: 90vh;
   width: 100%;
   display: flex;
   justify-content: center; }
@@ -227,15 +226,6 @@ button:focus {
     justify-content: center;
     align-items: center;
     flex-direction: column; }
-    .container .wrap .img {
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      height: 300px;
-      width: 100%;
-      opacity: 0.6;
-      position: relative;
-      top: 0px; }
     .container .wrap.active {
       opacity: 1;
       top: 0px; }
@@ -339,20 +329,22 @@ button:focus {
     font-size: 18px;
     line-height: 36px;
     padding-bottom: 60px; }
-  .container.contact .wrap .section {
-    padding-bottom: 60px; }
-    .container.contact .wrap .section .btn_contact_link {
-      cursor: pointer; }
-    .container.contact .wrap .section #msg_copy {
-      margin-top: 30px;
-      opacity: 0;
-      top: 20px;
-      transition: all 0.3s;
-      position: relative;
-      font-weight: 300; }
-      .container.contact .wrap .section #msg_copy.active {
-        opacity: 0.5;
-        top: 0; }
+  .container.contact {
+    min-height: 60vh; }
+    .container.contact .wrap {
+      min-height: 60vh; }
+      .container.contact .wrap .section .btn_contact_link {
+        cursor: pointer; }
+      .container.contact .wrap .section #msg_copy {
+        margin-top: 15px;
+        opacity: 0;
+        top: 20px;
+        transition: all 0.3s;
+        position: relative;
+        font-weight: 300; }
+        .container.contact .wrap .section #msg_copy.active {
+          opacity: 0.5;
+          top: 0; }
 
 .side_nav {
   width: 100vw;

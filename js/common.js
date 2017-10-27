@@ -51,7 +51,7 @@ $(".circle").click(function(){
             $(".title_box .vision").removeClass("white");
             $(".title_box .team").removeClass("white");
             $(".title_box .service").removeClass("white");
-            $(".title_box .ir").removeClass("white");
+            $(".title_box .history").removeClass("white");
             $(".title_box .contact").removeClass("white");
             $(".top_container .nav li").removeClass("white");
             $(".side_nav").css({"background-color": "rgba(255,255,255,0.7)"});
@@ -114,7 +114,7 @@ var progressBar = function() {
 
 var containerActive = function(con, wrap) {
     var innerHeight = window.innerHeight / 2;
-    var nowHeight = $(document).scrollTop() + innerHeight;
+    var nowHeight = $(document).scrollTop() + innerHeight - 200;
     var containerOffset = $(con).offset().top;
     if (containerOffset < nowHeight) {
         $(wrap).addClass("active");
