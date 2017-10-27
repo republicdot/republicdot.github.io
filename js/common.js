@@ -63,7 +63,7 @@ $(".circle").click(function(){
 })
 
 var smoothScroll = function(seq) {
-    var offset = $(seq).offset().top - 100;
+    var offset = $(seq).offset().top - 70;
     $('html, body').animate({scrollTop : offset},800, "swing");
 }
 
@@ -114,7 +114,7 @@ var progressBar = function() {
 
 var containerActive = function(con, wrap) {
     var innerHeight = window.innerHeight / 2;
-    var nowHeight = $(document).scrollTop() + innerHeight - 200;
+    var nowHeight = $(document).scrollTop() + innerHeight - 150;
     var containerOffset = $(con).offset().top;
     if (containerOffset < nowHeight) {
         $(wrap).addClass("active");
