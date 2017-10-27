@@ -8,7 +8,7 @@ $(document).ready(function(){
 $(".circle").click(function(){
     var condition = $("body").css("background-color");
     if ( condition == "rgb(255, 255, 255)" ){
-        $(this).css({"transform" : "scale(40)"});
+        $(this).css({"transform" : "scale(30)"});
         $(".top_container").removeClass("active");
         $(".title_box").removeClass("active");
         $("body").css({
@@ -31,9 +31,9 @@ $(".circle").click(function(){
             $(".title_box").addClass("active");
             $(".side_nav").css({"background-color": "rgba(0,0,0,0.4)"});
             $(".progress_bar").addClass("white");
-        }, 800);
+        }, 500);
     } else if ( condition == "rgb(17, 17, 17)") {
-        $(this).css({"transform" : "scale(40)"});
+        $(this).css({"transform" : "scale(30)"});
         $(".top_container").removeClass("active");
         $(".title_box").removeClass("active");
         $("body").css({
@@ -56,7 +56,7 @@ $(".circle").click(function(){
             $(".progress_bar").removeClass("white");
             $(".top_container").addClass("active");
             $(".title_box").addClass("active");
-        }, 800);
+        }, 500);
     }
 })
 

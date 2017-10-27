@@ -1,7 +1,4 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/earlyaccess/notosanskr.css);
-@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
-@import url(http://fonts.googleapis.com/earlyaccess/notosanssc.css);
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, textarea, p, blockquote, th, td, input, select, textarea, button {
   margin: 0;
   padding: 0; }
@@ -81,7 +78,7 @@ button:focus {
 
 /*  한국어 */
 :lang(ko) {
-  font-family: 'Noto Sans KR', sans-serif; }
+  font-family: '돋움', dotum, sans-serif; }
 
 .circle {
   width: 8vw;
@@ -90,7 +87,7 @@ button:focus {
   background-color: #000;
   margin: 60px 60px 0px 0px;
   position: absolute;
-  transition: all 0.4s;
+  transition: all 0.3s;
   right: 22%;
   top: 40%;
   opacity: 0;
@@ -103,6 +100,17 @@ button:focus {
     animation: circle 1.2s infinite;
     animation-timing-function: ease-in; }
 
+@keyframes circle {
+  0% {
+    transform: scale(1); }
+  50% {
+    transform: scale(1.02); }
+  60% {
+    transform: scale(1.2); }
+  70% {
+    transform: scale(1.02); }
+  100% {
+    transform: scale(1); } }
 .btn_top {
   position: fixed;
   right: 30px;
@@ -119,21 +127,10 @@ button:focus {
     bottom: 40px;
     opacity: 1; }
 
-@keyframes circle {
-  0% {
-    transform: scale(1); }
-  50% {
-    transform: scale(1.02); }
-  60% {
-    transform: scale(1.2); }
-  70% {
-    transform: scale(1.02); }
-  100% {
-    transform: scale(1); } }
 .top_container {
   padding: 60px;
   opacity: 0;
-  transition: all 0.8s;
+  transition: all 0.5s;
   position: relative;
   left: -100px;
   height: 92vh;
@@ -267,7 +264,7 @@ button:focus {
         width: 120px;
         height: 120px;
         border-radius: 60px;
-        box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 1px 6px 16px rgba(0, 0, 0, 0.1);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover; }
@@ -401,7 +398,7 @@ footer {
     .top_container .logo_box {
       height: 20vh; }
     .top_container .nav {
-      margin-top: 10px; }
+      margin-top: 20px; }
       .top_container .nav li {
         margin-top: 0; }
 
@@ -428,9 +425,13 @@ footer {
     top: 60px; }
   .container.service .wrap .row {
     position: relative;
-    top: 60px; }
+    top: 60px;
+    left: 0; }
     .container.service .wrap .row .section {
       padding-bottom: 0; }
+      .container.service .wrap .row .section .disc {
+        font-size: 14px;
+        line-height: 22px; }
   .container.history .wrap .section {
     position: relative;
     top: 30px; }
