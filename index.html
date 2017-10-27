@@ -1,247 +1,188 @@
-<!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta property="og:title" content="RepublicDot">
-    <meta property="og:site_name" content="RepublicDot">
-    <meta property="og:description" content="RepublicDot company website">
-
-    <!-- Milligram CSS minified -->
-    <link rel="stylesheet" href="css/milligram.min.css">
-    <link rel="stylesheet" href="css/main.css">
-
-    <title>RepublicDot</title>
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>Republic Dot</title>
+    <link rel="stylesheet" type="text/css" href="./style/style.css">
   </head>
-  <body>
-    <canvas id="canvas"></canvas>
-    <div class="container">
-      <div class="row">
-        <div class="column">
-          <img class='head-logo' src="img/logo_gray.svg" alt="RepublicDot Logo">
-          <p class="title">
-            당신을 위한 3세대 콘텐츠 커뮤니티
-          </p>
-          <p>
-            <span class="date">9.19</span>
-            <br />
-            리뷰가 영원히 바뀝니다.
-          </p>
-          <p class="form-desc">
-            사전등록 (현재 <span id="apply-num">...</span> 명)
-          </p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="column form">
-          <div id="error" class="error" id="help">
-            야생의 보노보노가 나타나 신청을 방해하였다.
-            &nbsp;&nbsp;
-            <a id="re-apply">다시 시도</a>
-          </div>
-          <form id="form">
-            <fieldset>
-              <input type="text" placeholder="Email" id="q1Field" />
-              <div class="help" id="help-q1">
-              </div>
-              <textarea placeholder="Comment (10자 이상)" id="q2Field"></textarea>
-              <div class="help" id="help-q2">
-              </div>
-              <button id="submit-button" class="button-primary" type="button" onclick="handleSendClick(event)">Send</button>
-            </fieldset>
-          </form>
-        </div>
-      </div>
+  <body lang="ko">
+    <div class="circle"></div>
+    <div class="circle circle2"></div>
+    <button class="btn_top">Top</button>
+    <div class="progress_bar"></div>
+    <div class="side_nav">
+        <ul>
+            <li class="btn_vision">Vision</li>
+            <li class="btn_team">Team</li>
+            <li class="btn_service">Service</li>
+            <li class="btn_history">History</li>
+            <li class="btn_contact">Contact</li>
+        </ul>
+        
     </div>
+    <div class="top_container">
+        <div class="logo_box">
+            <div class="logo"></div>
+        </div>    
+        <ul class="nav">
+            <li class="btn_vision">Vision</li>
+            <li class="btn_team">Team</li>
+            <li class="btn_service">Service</li>
+            <li class="btn_history">History</li>
+            <li class="btn_contact">Contact</li>
+        </ul>
+    </div>
+
+    <div class="title_box">
+        <div class="vision"></div>
+    </div>
+    <div class="container vision">
+        <div class="wrap">
+
+            <p class="title">More Conversation, Better world</p>
+            <p class="disc">우리는 사람들이 더 많이 이야기하고 더 많은 생각을 함께 공유할수록
+                    더 나은 세상이 될 것이라고 믿습니다.
+            </p>
+        </div>
+    </div>
+
+    <div class="title_box">
+        <div class="team"></div>
+        </div>
+        <div class="container team">
+            <div class="wrap">
+
+                <div class="row">
+                    <div class="card">
+                        <div class="photo member1"></div>
+                        <p class="name">박현빈</p>
+
+                        <p class="lv">CEO</p>
+                        <p class="disc">AKA 리뷰왕 김리뷰. </p>
+                    </div>
+                    <div class="card">
+                        <div class="photo member2"></div>
+                        <p class="name">이환희</p>
+
+                        <p class="lv">CTO</p>
+                        <p class="disc">리뷰왕 김리뷰</p>
+                    </div>
+                    <div class="card">
+                        <div class="photo member3"></div>
+                        <p class="name">신동주</p>
+
+                        <p class="lv">CDO</p>
+                        <p class="disc">리뷰왕 김리뷰</p>
+                    </div>
+
+                    <div class="card">
+                        <div class="photo member4"></div>
+                        <p class="name">오현석</p>
+
+                        <p class="lv">CFO</p>
+                        <p class="disc">리뷰왕 김리뷰</p>
+                    </div>
+                    <div class="card">
+                        <div class="photo member5"></div>
+                        <p class="name">마광휘</p>
+
+                        <p class="lv">Developer</p>
+                        <p class="disc">리뷰왕 김리뷰</p>
+                    </div>
+                    <div class="card">
+                        <div class="photo member6"></div>
+                        <p class="name">김혜정</p>
+
+                        <p class="lv">Designer</p>
+                        <p class="disc">리뷰왕 김리뷰</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="title_box">
+            <div class="service"></div>
+        </div>
+        <div class="container service">
+            <div class="wrap">
+                <div class="row">
+                    <div class="section">
+                        <div class="title">
+                            REVIEW REPUBLIC
+                        </div>
+                        <div class="disc">
+                            User contents based<br>
+                            Review community platfrom
+                        </div>
+                        <div class="status blue">
+                            <a href="https://reviewrepublic.net" target="blank">reviewrepublic.net</a>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="title">
+                            REDOT
+                        </div>
+                        <div class="disc">
+                            3rd Generation Community<br>
+                            of the Communication<br>
+                            by the Communication<br>
+                            for the Communication
+                        </div>
+                        <div class="status">
+                            now developing...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+    
+        </div>
+
+    <div class="title_box">
+            <div class="history"></div>
+        </div>
+        <div class="container history">
+            <div class="wrap">
+                <div class="section">
+                    <p>
+                        2016.04 (주)리퍼블릭닷 법인 설립<br>
+                        2016.06 ‘Review Republic’ 클로즈베타 서비스 런칭<br>
+                        2016.09 ‘Review Republic’ 오픈베타 서비스 런칭<br>
+                        2017.06 (주)스프링캠프로부터 초기 투자 유치<br>
+                        2017.07 1차 공개채용 실시<br>
+                        2017.08 ‘redot’ 서비스 개발 시작
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    <div class="title_box">
+            <div class="contact"></div>
+        </div>
+        <div class="container contact">
+            <div class="wrap">
+                <div class="section">
+                    <div class="btn_contact_link">contact@republicdot.com</div>                    
+                    <p id="msg_copy">이메일 주소가 클립보드에 복사되었습니다.</p>                    
+                </div>
+            </div>
+            
+        </div>
     <footer>
-      <a class="facebook-link" href="https://www.facebook.com/RepublicDot/" target="_blank">facebook</a>
+        <div class="wrap_footer">
+            <span>
+            대표 : 박현빈<br>
+            사업자등록번호 : 12947129724
+            </span>
+            <span>
+            대표 : 박현빈<br>
+            사업자등록번호 : 12947129724
+            </span>
+        </div>
     </footer>
-    <div id="feedback">
-      신청이 완료되었습니다.
-    </div>
-    <div class="cssload-thecube" style="display: none;">
-    	<div class="cssload-cube cssload-c1"></div>
-    	<div class="cssload-cube cssload-c2"></div>
-    	<div class="cssload-cube cssload-c4"></div>
-    	<div class="cssload-cube cssload-c3"></div>
-    </div>
-    <!-- The Modal -->
-    <div id="mainPopup" class="modal">
-
-      <!-- The Close Button -->
-      <span class="modal-close">&times;</span>
-
-      <!-- Modal Content (The Image) -->
-      <img class="modal-content" id="img01">
-
-      <!-- Modal Caption (Image Text) -->
-      <div id="caption"></div>
-    </div>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
-    <script type="text/javascript" src="js/background.js"></script>
-    <script type="text/javascript">
-
-    var CLIENT_ID = '77785196753-ppvnddomaq0i35pglsganqq6etuvscbq.apps.googleusercontent.com';
-    var SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
-    var SPREADSHEET_ID = '1-cVEfm0L99dY2x2wRyvytmRsU3qO756g9UYKx_uravI';
-    var API_KEY = 'AIzaSyBOp1McIXyjaia1iAkG_b-G1d8WQmUgh2w';
-    var discoveryUrl =
-        'https://sheets.googleapis.com/$discovery/rest?version=v4';
-
-    var OPENBETA_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwhbRD2Pav3Gyluz6ytyTp3fqyZsfH5CnJSOeXCQXs8sGLPwW8/exec';
-
-    var $loading = $(".cssload-thecube");
-    var $submitButton = $("#submit-button");
-
-    function startLoading() {
-      $submitButton.html("");
-      $submitButton.append($loading.show());
-      $submitButton.attr("disabled", true);
-    }
-
-    function stopLoading() {
-      $loading.remove();
-      $submitButton.html("Send");
-      $submitButton.removeAttr("disabled");
-    }
-
-    function validateForm(q1, q2) {
-      if (q1.length === 0) {
-        $("#help-q1").html("Email은 필수입력 항목입니다.").show();
-        return false;
-      }
-      if (q2.length < 10) {
-        $("#help-q2").html("Comment는 10자 이상 써주셔야 합니다.").show();
-        return false;
-      }
-      return true;
-    }
-
-    function handleSendClick(event) {
-      var q1 = $('#q1Field').val();
-      var q2 = $('#q2Field').val();
-
-      $("#error").hide();
-      $("#help-q1").hide();
-      $("#help-q2").hide();
-
-      if (validateForm(q1, q2)) {
-        addRowToGoogleSheet(OPENBETA_SHEET_URL, {email: q1, comment: q2});
-      }
-
-      return false;
-    }
-
-    function getTotalApplyCount(url) {
-      startLoading();
-      $.ajax({
-        url: url,
-        type: 'GET'
-      })
-      .done(function(r) {
-        stopLoading();
-        $("#apply-num").html(r.total-1);
-      })
-      .fail(function(e) {
-        stopLoading();
-        $("#apply-num").html('xxx');
-      });
-    }
-
-    function addRowToGoogleSheet(url, data) {
-      startLoading();
-
-      $.ajax({
-        url: url,
-        data: data,
-        type: 'POST'
-      })
-      .done(function(r) {
-        stopLoading();
-        $("#q1Field").val('');
-        $("#q2Field").val('');
-        $("#error").hide();
-        $("#help-q1").hide();
-        $("#help-q2").hide();
-
-        $("#apply-num").html(r.row-1);
-
-        $("#feedback").fadeIn();
-        setTimeout(function(){$("#feedback").fadeOut();}, 5000);
-      })
-      .fail(function(e) {
-        stopLoading();
-        $("#error").show();
-      });
-    }
-
-    function addRowToGoogleSheets() {
-      var q1 = $('#q1Field').val();
-      var q2 = $('#q2Field').val();
-
-      startLoading();
-
-      gapi.client.sheets.spreadsheets.values.append({
-        spreadsheetId: SPREADSHEET_ID,
-        range: 'response!A1:D1',
-        valueInputOption: 'USER_ENTERED'
-      }, {
-        "values": [
-          [new Date(), q1, q2]
-        ],
-      }).then(function(r) {
-        stopLoading();
-        $("#q1Field").val('');
-        $("#q2Field").val('');
-        $("#error").hide();
-        $("#help-q1").hide();
-        $("#help-q2").hide();
-
-        $("#feedback").fadeIn();
-        setTimeout(function(){$("#feedback").fadeOut();}, 5000);
-      }, function(e) {
-        $loading.remove();
-        $submitButton.html("Send");
-        $("#error").show();
-      });
-    }
-
-    function showMainPopup() {
-      var $modal = $("#mainPopup");
-
-      var $modalImg = $("#img01");
-
-      $modalImg.attr("src", "img/ad1.png");
-      $modalImg.click(function() {
-        window.open('http://www.yes24.com/24/Goods/30108067?Acode=101', '_blank');
-      });
-
-      var $span = $(".modal-close");
-
-      // When the user clicks on <span> (x), close the modal
-      $span.click(function() {
-        $modal.fadeOut();
-      });
-
-      $modal.fadeIn(3000);
-    }
-
-    $(function() {
-      $("#re-apply").click(function() {
-        $("#error").hide();
-        $submitButton.trigger("click");
-      });
-
-      setTimeout(function() {
-        showMainPopup();
-      }, 5000);
-
-      getTotalApplyCount(OPENBETA_SHEET_URL);
-
-      setInterval(function() {
-        document.body.innerHTML += "<div class='incredible-ads' style='color:#000;width:100px;height:100px;background-color:#fff;'>광고</div>";
-      }, 1000);
-    });
-    </script>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/common.js"></script>
   </body>
 </html>
