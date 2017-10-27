@@ -115,7 +115,7 @@ button:focus {
   position: fixed;
   right: 30px;
   bottom: 0px;
-  background-color: #444;
+  background-color: #333;
   width: 48px;
   height: 48px;
   border-radius: 48px;
@@ -229,22 +229,25 @@ button:focus {
       top: 0px; }
   .container.vision .wrap {
     box-sizing: border-box;
-    padding: 20px; }
-    .container.vision .wrap .img {
-      background-image: url(../images/vision.jpg); }
-    .container.vision .wrap .title {
-      font-size: 48px;
-      font-weight: 700;
-      line-height: 62px;
-      letter-spacing: -3; }
-    .container.vision .wrap .disc {
-      font-size: 18px;
-      font-weight: 300;
-      max-width: 500px;
-      margin: 0 auto;
-      margin-top: 10px;
-      line-height: 26px;
-      padding-bottom: 120px; }
+    padding: 20px;
+    text-align: left;
+    align-items: center;
+    justify-content: center; }
+    .container.vision .wrap > div {
+      position: relative;
+      left: -10%; }
+      .container.vision .wrap > div .title {
+        font-size: 52px;
+        font-weight: 700;
+        line-height: 62px;
+        letter-spacing: -3; }
+      .container.vision .wrap > div .disc {
+        font-size: 18px;
+        font-weight: 300;
+        max-width: 500px;
+        margin-top: 10px;
+        line-height: 26px;
+        padding-bottom: 120px; }
   .container.team .wrap .img {
     background-image: url(../images/team.jpg); }
   .container.team .wrap .row {
@@ -260,11 +263,10 @@ button:focus {
       display: inline-block;
       margin: 30px 5px; }
       .container.team .wrap .row .card .photo {
-        margin: 0 auto;
         width: 120px;
         height: 120px;
+        margin: 0 auto;
         border-radius: 60px;
-        box-shadow: 1px 6px 16px rgba(0, 0, 0, 0.1);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover; }
@@ -286,10 +288,12 @@ button:focus {
       .container.team .wrap .row .card .lv {
         font-size: 14px;
         opacity: 0.5;
-        margin-top: 5px; }
+        margin-top: 2px; }
       .container.team .wrap .row .card .disc {
         font-size: 14px;
         opacity: 0.7;
+        max-width: 146px;
+        margin: 0 auto;
         margin-top: 10px; }
   .container.service .wrap .row {
     width: 100%;
@@ -387,7 +391,7 @@ footer {
       display: inline-block;
       margin-right: 30px; }
 
-@media (max-width: 460px) {
+@media (max-width: 768px) {
   .circle {
     width: 20vw;
     height: 20vw;
@@ -406,15 +410,14 @@ footer {
     height: 35px;
     margin-right: 10px; }
 
-  .container.vision .wrap {
-    text-align: left;
-    align-items: flex-start; }
-    .container.vision .wrap .title {
+  .container.vision .wrap > div {
+    left: 0; }
+    .container.vision .wrap > div .title {
       font-size: 24px;
-      line-height: 32px;
+      line-height: 28px;
       letter-spacing: -1;
       width: 240px; }
-    .container.vision .wrap .disc {
+    .container.vision .wrap > div .disc {
       margin-top: 20px;
       font-size: 16px;
       line-height: 24px;
@@ -423,6 +426,8 @@ footer {
   .container.team .wrap .row {
     position: relative;
     top: 60px; }
+    .container.team .wrap .row .card {
+      width: 47%; }
   .container.service .wrap .row {
     position: relative;
     top: 60px;

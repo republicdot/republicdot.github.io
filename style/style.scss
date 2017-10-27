@@ -89,7 +89,7 @@ button:focus {
     position: fixed;
     right: 30px;
     bottom: 0px;
-    background-color: #444;
+    background-color: #333;
     width: 48px;
     height: 48px;
     border-radius: 48px;
@@ -228,24 +228,28 @@ button:focus {
         .wrap {
             box-sizing: border-box;
             padding: 20px;
-            .img {
-                background-image: url(../images/vision.jpg);
+            text-align: left;
+            align-items: center;
+            justify-content: center;
+            & > div{
+                position: relative;
+                left: -10%;
+                .title {
+                    font-size: 52px;
+                    font-weight: 700;
+                    line-height: 62px;
+                    letter-spacing: -3;
+                }
+                .disc {
+                    font-size: 18px;
+                    font-weight: 300;
+                    max-width: 500px;
+                    margin-top: 10px;
+                    line-height: 26px;
+                    padding-bottom: 120px;
+                }
             }
-            .title {
-                font-size: 48px;
-                font-weight: 700;
-                line-height: 62px;
-                letter-spacing: -3;
-            }
-            .disc {
-                font-size: 18px;
-                font-weight: 300;
-                max-width: 500px;
-                margin: 0 auto;
-                margin-top: 10px;
-                line-height: 26px;
-                padding-bottom: 120px;
-            }
+
         }
         
     }
@@ -267,11 +271,10 @@ button:focus {
                     display: inline-block;
                     margin: 30px 5px;
                     .photo {
-                        margin: 0 auto;
                         width: 120px;
                         height: 120px;
-                        border-radius: 60px;
-                        box-shadow: 1px 6px 16px rgba(0,0,0,0.1);                        
+                        margin: 0 auto;
+                        border-radius: 60px;               
                         background-position: center;
                         background-repeat: no-repeat;
                         background-size: cover;
@@ -301,11 +304,13 @@ button:focus {
                     .lv {
                         font-size: 14px;
                         opacity: 0.5;
-                        margin-top: 5px;
+                        margin-top: 2px;
                     }
                     .disc {
                         font-size: 14px;
                         opacity: 0.7;
+                        max-width: 146px;
+                        margin: 0 auto;
                         margin-top: 10px;
                     }
                 }
@@ -444,7 +449,7 @@ footer {
 }
 
 
-@media (max-width : 460px) {
+@media (max-width : 768px) {
     .circle {
         width: 20vw;
         height: 20vw;
@@ -469,20 +474,21 @@ footer {
     .container{
         &.vision {
             .wrap {
-                text-align: left;
-                align-items: flex-start;
-                .title {
-                    font-size: 24px;
-                    line-height: 32px;
-                    letter-spacing: -1;
-                    width: 240px;
-                }
-                .disc {
-                    margin-top: 20px;
-                    font-size: 16px;
-                    line-height: 24px;
-                    word-break: keep-all;
-                    padding-bottom: 10px;
+                & > div {
+                    left: 0;
+                    .title {
+                        font-size: 24px;
+                        line-height: 28px;
+                        letter-spacing: -1;
+                        width: 240px;
+                    }
+                    .disc {
+                        margin-top: 20px;
+                        font-size: 16px;
+                        line-height: 24px;
+                        word-break: keep-all;
+                        padding-bottom: 10px;
+                    }
                 }
             }
         }
@@ -491,6 +497,9 @@ footer {
                 .row {
                     position: relative;
                     top: 60px;
+                    .card {
+                        width: 47%;
+                    }
                 }
             }
         }
