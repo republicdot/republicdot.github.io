@@ -20,16 +20,16 @@ $(".circle").click(function(){
                 "background-color": "#111"
             });
             $(".circle").css({"background-color" : "#fff"});
-            $(".logo").css({"background-image" : "url(./images/logo_w.svg)"});
-            $(".title_box .vision").css({"background-image" : "url(./images/vision_w.svg)"});
-            $(".title_box .team").css({"background-image" : "url(./images/team_w.svg)"});
-            $(".title_box .service").css({"background-image" : "url(./images/service_w.svg)"});
-            $(".title_box .history").css({"background-image" : "url(./images/history_w.svg)"});
-            $(".title_box .contact").css({"background-image" : "url(./images/contact_w.svg)"});
+            $(".logo").addClass("white");
+            $(".title_box .vision").addClass("white");
+            $(".title_box .team").addClass("white");
+            $(".title_box .service").addClass("white");
+            $(".title_box .history").addClass("white");
+            $(".title_box .contact").addClass("white");
             $(".top_container .nav li").addClass("white");
             $(".top_container").addClass("active");
             $(".title_box").addClass("active");
-            $(".side_nav").css({"background-color": "rgba(0,0,0,0.4)"});
+            $(".side_nav").css({"background-color": "rgba(17,17,17,0.6)"});
             $(".progress_bar").addClass("white");
         }, 500);
     } else if ( condition == "rgb(17, 17, 17)") {
@@ -45,14 +45,14 @@ $(".circle").click(function(){
                 "background-color": "#fff"
             });
             $(".circle").css({"background-color" : "#000"});
-            $(".logo").css({"background-image" : "url(./images/logo.svg)"});
-            $(".title_box .vision").css({"background-image" : "url(./images/vision.svg)"});
-            $(".title_box .team").css({"background-image" : "url(./images/team.svg)"});
-            $(".title_box .service").css({"background-image" : "url(./images/service.svg)"});
-            $(".title_box .ir").css({"background-image" : "url(./images/history.svg)"});
-            $(".title_box .contact").css({"background-image" : "url(./images/contact.svg)"});
+            $(".logo").removeClass("white");
+            $(".title_box .vision").removeClass("white");
+            $(".title_box .team").removeClass("white");
+            $(".title_box .service").removeClass("white");
+            $(".title_box .ir").removeClass("white");
+            $(".title_box .contact").removeClass("white");
             $(".top_container .nav li").removeClass("white");
-            $(".side_nav").css({"background-color": "rgba(255,255,255,0.4)"});
+            $(".side_nav").css({"background-color": "rgba(255,255,255,0.7)"});
             $(".progress_bar").removeClass("white");
             $(".top_container").addClass("active");
             $(".title_box").addClass("active");

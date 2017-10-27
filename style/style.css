@@ -27,11 +27,11 @@ button {
 
 body {
   background: #fff;
-  font: 16px/1.2em apple SD gothic neo,'돋움',dotum,sans-serif;
+  font: 16px/1.2em apple SD gothic neo,'맑은 고딕',dotum,sans-serif;
   color: #000; }
 
 th, td, input, select, textarea, button {
-  font: 16px/1.2em apple SD gothic neo,'돋움',dotum,sans-serif;
+  font: 16px/1.2em apple SD gothic neo,'맑은 고딕',dotum,sans-serif;
   color: #000; }
 
 a {
@@ -78,7 +78,7 @@ button:focus {
 
 /*  한국어 */
 :lang(ko) {
-  font-family: '돋움', dotum, sans-serif; }
+  font-family: Helvetica, apple SD gothic neo, '맑은 고딕', '돋움', sans-serif; }
 
 .circle {
   width: 8vw;
@@ -147,6 +147,8 @@ button:focus {
       background-position: left;
       background-size: contain;
       background-repeat: no-repeat; }
+      .top_container .logo_box .logo.white {
+        background-image: url(../images/logo_w.svg); }
   .top_container .nav {
     margin-top: 30px;
     display: flex;
@@ -188,14 +190,24 @@ button:focus {
     height: 100%; }
   .title_box .vision {
     background-image: url(../images/vision.svg); }
+    .title_box .vision.white {
+      background-image: url(../images/vision_w.svg); }
   .title_box .team {
     background-image: url(../images/team.svg); }
+    .title_box .team.white {
+      background-image: url(../images/team_w.svg); }
   .title_box .history {
     background-image: url(../images/history.svg); }
+    .title_box .history.white {
+      background-image: url(../images/history_w.svg); }
   .title_box .service {
     background-image: url(../images/service.svg); }
+    .title_box .service.white {
+      background-image: url(../images/service_w.svg); }
   .title_box .contact {
     background-image: url(../images/contact.svg); }
+    .title_box .contact.white {
+      background-image: url(../images/contact_w.svg); }
 
 .container {
   min-height: 90vh;
@@ -414,7 +426,7 @@ footer {
     left: 0; }
     .container.vision .wrap > div .title {
       font-size: 24px;
-      line-height: 28px;
+      line-height: 26px;
       letter-spacing: -1;
       width: 240px; }
     .container.vision .wrap > div .disc {
@@ -433,7 +445,8 @@ footer {
     top: 60px;
     left: 0; }
     .container.service .wrap .row .section {
-      padding-bottom: 0; }
+      padding-bottom: 0;
+      min-width: 280px; }
       .container.service .wrap .row .section .disc {
         font-size: 14px;
         line-height: 22px; }
@@ -445,6 +458,28 @@ footer {
       line-height: 26px; }
   .container.contact .wrap .section {
     position: relative;
-    top: 30px; } }
+    top: 30px; }
+
+  .side_nav {
+    width: 100vw;
+    position: fixed;
+    top: -100;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s;
+    z-index: 101; }
+    .side_nav.active {
+      top: 0; }
+    .side_nav ul {
+      display: flex;
+      max-width: 768px;
+      width: 100%;
+      margin: 0 auto;
+      justify-content: space-between;
+      padding: 5px 10px;
+      box-sizing: border-box; }
+      .side_nav ul li {
+        cursor: pointer;
+        padding: 10px 5px;
+        font-size: 14px; } }
 
 /*# sourceMappingURL=style.css.map */

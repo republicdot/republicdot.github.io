@@ -5,8 +5,8 @@ blockquote, q {quotes: none;}
 blockquote:before, blockquote:after,q:before, q:after {content:'';content:none;}
 input,select,textarea,button {vertical-align:middle;}
 button {border:0 none; background-color:transparent; cursor:pointer;}
-body {background:#fff;font:16px/1.2em apple SD gothic neo,'돋움',dotum,sans-serif; color:#000;}
-th,td,input,select,textarea,button {font:16px/1.2em apple SD gothic neo,'돋움',dotum,sans-serif; color:#000;}
+body {background:#fff;font:16px/1.2em apple SD gothic neo,'맑은 고딕',dotum,sans-serif; color:#000;}
+th,td,input,select,textarea,button {font:16px/1.2em apple SD gothic neo,'맑은 고딕',dotum,sans-serif; color:#000;}
 a {color:#fff;text-decoration:none;}
 a:active, a:hover {text-decoration:none;}
 address,caption,cite,code,dfn,em,var {font-style:normal;font-weight:normal;}
@@ -41,7 +41,7 @@ button:focus {
 
 /*  한국어 */
 :lang(ko) {
-    font-family: '돋움', dotum, sans-serif;
+    font-family: Helvetica, apple SD gothic neo, '맑은 고딕', '돋움', sans-serif;
   }
 .circle {
     width: 8vw;
@@ -124,6 +124,9 @@ button:focus {
             background-position: left;
             background-size: contain;
             background-repeat: no-repeat;
+            &.white {
+                background-image: url(../images/logo_w.svg);
+            }
         }
     }
     .nav {
@@ -175,18 +178,33 @@ button:focus {
     }
     .vision {
         background-image: url(../images/vision.svg);
+        &.white {
+            background-image: url(../images/vision_w.svg);
+        }
     }
     .team {
         background-image: url(../images/team.svg);
+        &.white {
+            background-image: url(../images/team_w.svg);
+        }
     }
     .history {
         background-image: url(../images/history.svg);
+        &.white {
+            background-image: url(../images/history_w.svg);
+        }
     }
     .service {
         background-image: url(../images/service.svg);
+        &.white {
+            background-image: url(../images/service_w.svg);
+        }
     }
     .contact {
         background-image: url(../images/contact.svg);
+        &.white {
+            background-image: url(../images/contact_w.svg);
+        }
     }
 }
 
@@ -478,7 +496,7 @@ footer {
                     left: 0;
                     .title {
                         font-size: 24px;
-                        line-height: 28px;
+                        line-height: 26px;
                         letter-spacing: -1;
                         width: 240px;
                     }
@@ -511,6 +529,7 @@ footer {
                     left: 0;
                     .section {
                         padding-bottom: 0;
+                        min-width: 280px;
                         .disc {
                             font-size: 14px;
                             line-height: 22px;
@@ -539,5 +558,31 @@ footer {
                 }
             }
         }
+    }
+    .side_nav {
+        width: 100vw;
+        position: fixed;
+        top: -100;
+        background-color: rgba(255,255,255,0.7);
+        transition: all 0.3s;
+        z-index: 101;
+        &.active {
+            top: 0;
+        }
+        ul {
+            display: flex;
+            max-width: 768px;
+            width: 100%;
+            margin: 0 auto;
+            justify-content: space-between;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            li {
+                cursor: pointer;
+                padding: 10px 5px;
+                font-size: 14px;
+            }
+        }
+    
     }
 }
