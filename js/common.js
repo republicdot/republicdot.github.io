@@ -8,32 +8,34 @@ $(document).ready(function(){
 $(".circle").click(function(){
     var condition = $("body").css("background-color");
     if ( condition == "rgb(255, 255, 255)" ){
-        $(this).css({"transform" : "scale(30)"});
+        $(this).css({"transform" : "scale(19)"});
         $(".top_container").removeClass("active");
         $(".title_box").removeClass("active");
         $("body").css({
             "color" : "#fff"
         })
         setTimeout(function(){
-            $(".circle").css({"transform" : "scale(1)"});
-            $("body").css({
-                "background-color": "#111"
-            });
-            $(".circle").css({"background-color" : "#fff"});
             $(".logo").addClass("white");
             $(".title_box .vision").addClass("white");
             $(".title_box .team").addClass("white");
             $(".title_box .service").addClass("white");
             $(".title_box .history").addClass("white");
             $(".title_box .contact").addClass("white");
+        }, 400);
+        setTimeout(function(){
+            $(".circle").css({"transform" : "scale(1)"});
+            $("body").css({
+                "background-color": "#111"
+            });
+            $(".circle").css({"background-color" : "#fff"});
             $(".top_container .nav li").addClass("white");
             $(".top_container").addClass("active");
             $(".title_box").addClass("active");
             $(".side_nav").css({"background-color": "rgba(17,17,17,0.6)"});
             $(".progress_bar").addClass("white");
-        }, 500);
+        }, 800);
     } else if ( condition == "rgb(17, 17, 17)") {
-        $(this).css({"transform" : "scale(30)"});
+        $(this).css({"transform" : "scale(19)"});
         $(".top_container").removeClass("active");
         $(".title_box").removeClass("active");
         $("body").css({
@@ -56,7 +58,7 @@ $(".circle").click(function(){
             $(".progress_bar").removeClass("white");
             $(".top_container").addClass("active");
             $(".title_box").addClass("active");
-        }, 500);
+        }, 800);
     }
 })
 
